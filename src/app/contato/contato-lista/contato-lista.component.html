@@ -1,0 +1,50 @@
+<div class="card">
+    <div class="card-header">
+        <div class="float-left">
+            <h4>Contatos</h4>
+        </div>
+        <div class="float-right">
+            <button type="button" class="btn btn-primary" [routerLink]="['/novo']">Novo Contato</button>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover" *ngIf=" contatos$ as contatos; else loading">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let contato of contatos">
+                    <td>{{contato.id}}</td>
+                    <td>{{contato.nome}}</td>
+                    <td>{{contato.telefone}}</td>
+                    <td>
+                        <span class="float-right">
+                            <button class="btn btn-outline-warning mb1 btn-sm" (click)="editar(contato.id)">
+                                Atualizar
+                            </button>                                                    
+                            <button class="btn btn-outline-danger mb1 btn-sm" (click)="deletar(contato)">
+                                Remover
+                            </button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ng-template #loading>
+            <span>Loading....</span>
+        </ng-template>
+    </div>
+</div>
+
+<ng-template #deleteModal>
+  <div class="modal-body text-center">
+    <p>Tem certeza que deseja deletar esse Contato?</p>
+    <button type="button" class="btn btn-default" (click)="confirmDelete()" >Sim</button>
+    <button type="button" class="btn btn-primary" (click)="declineDelete()" >Não</button>
+  </div>
+</ng-template>

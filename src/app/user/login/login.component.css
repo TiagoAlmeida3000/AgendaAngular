@@ -1,0 +1,10 @@
+.loginform{
+    margin: 100px auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+button{
+    margin: 0 auto;
+    max-width: 200px;
+}
