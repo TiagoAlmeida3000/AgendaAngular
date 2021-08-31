@@ -15,6 +15,7 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     children: [
+        {path: '', redirectTo : 'contatos', pathMatch: 'full'},
         {path: 'contatos', component: ContatoListaComponent},
         {path: 'novo', component: ContatoFormComponent },
         {path: 'editar/:id', component: ContatoFormComponent}, 

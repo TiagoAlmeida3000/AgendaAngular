@@ -31,7 +31,6 @@ export class ContatoFormComponent implements OnInit {
         this.contatoServise.getById(parseInt(id)).subscribe(contato =>{
         this.contato = contato;
         this.title = "Alterando contato";
-        debugger
       });
     }
   }

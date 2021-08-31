@@ -25,22 +25,21 @@ export class ContatoListaComponent implements OnInit {
 
   get headers(): HttpHeaders {
     return new HttpHeaders().set('content-type', 'application/json');
-}
+  }
 
-user: any;
-get usuario() {
-  let usuario_json = localStorage.getItem("id");
-  this.user = usuario_json;
-  console.log("User" + this.user)
-  return this.user;
-}
+  user: any;
+  get usuario() {
+    let usuario_json = localStorage.getItem("id");
+    this.user = usuario_json;
+    return this.user;
+  }
 
   ngOnInit(): void {
     this.listarContatos();
   }
 
   listarContatos(){ 
-       this.http.get(this.URLAPI + "Contato").pipe(tap(console.log)).subscribe(contato =>{
+       this.http.get(this.URLAPI + "Contato").pipe().subscribe(contato =>{
           this.contatos$ = contato;
     });
   }

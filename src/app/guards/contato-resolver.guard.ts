@@ -20,13 +20,13 @@ export class ContatoResolverGuard implements Resolve<Contato> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<Contato> {
-    if (route.params && route.params['Id']) {        
-        return this.http.get<Contato>(`${this.API}Contato/Obter/${route.params['Id']}`).pipe(take(1),tap(console.log));
+    if (route.params && route.params['id']) {        
+        return this.http.get<Contato>(`${this.API}Contato/Obter/${route.params['id']}`).pipe(take(1),tap(console.log));
     }
     return of({
-      Id:0,
-      Nome:"",
-      Telefone:""
+      id:0,
+      nome:"",
+      telefone:""
     });
   }
 }

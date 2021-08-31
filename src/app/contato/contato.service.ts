@@ -21,18 +21,16 @@ export class ContatoService {
 get usuario() {
     let usuario_json = localStorage.getItem("id");
     this.user = usuario_json;
-    console.log("User" + this.user)
     return this.user;
-}
+  }
 
   getUserId(id : any){
     this.userId = id
     this.id = localStorage.setItem('id', this.userId);
   }
 
-
   getAll(){
-    return this.http.get<Contato[]>(`${environment.API}Contato`).pipe(tap(console.log))
+    return this.http.get<Contato[]>(`${environment.API}Contato`).pipe()
   }
 
   getById(id:number){
@@ -41,17 +39,12 @@ get usuario() {
 
   save(contato: Contato){
     const contatoBody = {
-      Id : contato.Id,
-      Nome: contato.Nome,
-      Telefone: contato.Telefone,
+      Id : contato.id,
+      Nome: contato.nome,
+      Telefone: contato.telefone,
       UserId : this.usuario
     }
-
-
-    console.log(contatoBody)
-      return this.http.post<Contato>(`${environment.API}Contato`, contatoBody).pipe(tap(console.log));
-   
-
+      return this.http.post<Contato>(`${environment.API}Contato`, contatoBody).pipe();
     }
 
   delete(contato : Contato){
